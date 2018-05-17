@@ -108,12 +108,7 @@ with tf.Session() as sess:
     # Start populating the filename queue.
     coord = tf.train.Coordinator()
     threads = tf.train.start_queue_runners(coord=coord, sess=sess)
-
-    def estabilidad(validation_errors):
-        if len(validation_errors) > 2:
-            if abs(validation_errors[-1] - validation_errors[-2]) < 0.1 and validation_errors[-1] < 0.05:
-                return False
-        return True
+    
 
     training_errors = []
     validation_errors = []
